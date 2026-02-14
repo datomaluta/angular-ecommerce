@@ -1,7 +1,7 @@
 import { Component, computed, inject, input } from '@angular/core';
-import { CartItem } from '../../models/cart';
-import { QtySelector } from '../../components/qty-selector/qty-selector';
-import { EcommerceStore } from '../../ecommerce-store';
+import { CartItem } from '../../../models/cart';
+import { QtySelector } from '../../../components/qty-selector/qty-selector';
+import { EcommerceStore } from '../../../ecommerce-store';
 import { MatIcon } from '@angular/material/icon';
 import { MatIconButton } from '@angular/material/button';
 
