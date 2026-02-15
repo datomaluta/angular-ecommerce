@@ -84,7 +84,7 @@ export class SignInDialog {
 
   signInForm = this.fb.group({
     email: ['john@test.com', Validators.required],
-    password: ['password', Validators.required],
+    password: ['dato', Validators.required],
   });
 
   signIn() {

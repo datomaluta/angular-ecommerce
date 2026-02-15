@@ -14,6 +14,7 @@ import { MatIconButton } from '@angular/material/button';
         [src]="item().product.imageUrl"
         [alt]="item().product.id"
         class="w-24 h-24 rounded-lg object-cover"
+        [style.view-transition-name]="'product-image-' + item().product.id"
       />
       <div>
         <div class="text-gray-900 text-lg font-semibold">{{ item().product.name }}</div>

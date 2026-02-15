@@ -100,8 +100,8 @@ export class SignUpDialog {
   signUpForm = this.fb.group({
     name: ['John D', Validators.required],
     email: ['john@test.com', Validators.required],
-    password: ['password123', Validators.required],
-    confirmPassword: ['password123', Validators.required],
+    password: ['dato', Validators.required],
+    confirmPassword: ['dato', Validators.required],
   });
 
   signUp() {

@@ -7,6 +7,10 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/products-grid/products-grid'),
   },
   {
+    path: 'product/:productId',
+    loadComponent: () => import('./pages/view-product-detail/view-product-detail'),
+  },
+  {
     path: 'wishlist',
     loadComponent: () => import('./pages/my-wishlist/my-wishlist'),
   },
@@ -19,7 +23,7 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/checkout/checkout'),
   },
   {
-    path:'order-success',
+    path: 'order-success',
     loadComponent: () => import('./pages/order-success/order-success'),
-  }
+  },
 ];
