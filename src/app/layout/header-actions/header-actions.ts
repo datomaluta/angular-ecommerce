@@ -1,5 +1,4 @@
 import { Component, inject } from '@angular/core';
-import { MatButton, MatIconButton, MatAnchor } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 import { MatBadge } from '@angular/material/badge';
@@ -9,19 +8,21 @@ import { MatDivider } from '@angular/material/divider';
 import { MatDialog } from '@angular/material/dialog';
 import { SignInDialog } from '../../components/sign-in-dialog/sign-in-dialog';
 import { SignUpDialog } from '../../components/sign-up-dialog/sign-up-dialog';
+import { MatAnchor, MatButton, MatIconButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-header-actions',
   imports: [
     MatIconButton,
     MatIcon,
-    MatAnchor,
     RouterLink,
     MatBadge,
     MatMenu,
     MatMenuItem,
     MatMenuTrigger,
     MatDivider,
+    MatAnchor,
+    MatButton,
   ],
   template: `
     <div class="flex items-center gap-2">
@@ -73,7 +74,6 @@ export class HeaderActions {
   openSignInDialog() {
     this.matDialog.open(SignInDialog, {
       disableClose: true,
-      
     });
   }
 
