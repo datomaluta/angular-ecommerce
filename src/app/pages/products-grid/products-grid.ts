@@ -1,4 +1,4 @@
-import { Component, computed, effect, inject, input, signal } from '@angular/core';
+import { Component, computed, effect, inject, input, signal, ViewChild } from '@angular/core';
 import { Product } from '../../models/product';
 import { ProductCard } from '../../components/product-card/product-card';
 import { MatSidenavContainer, MatSidenavContent, MatSidenav } from '@angular/material/sidenav';
@@ -7,6 +7,7 @@ import { RouterLink } from '@angular/router';
 import { TitleCasePipe } from '@angular/common';
 import { EcommerceStore } from '../../ecommerce-store';
 import { ToggleWishlistButton } from '../../components/toggle-wishlist-button/toggle-wishlist-button';
+import { LayoutService } from '../../services/layout';
 
 @Component({
   selector: 'app-products-grid',
@@ -24,7 +25,7 @@ import { ToggleWishlistButton } from '../../components/toggle-wishlist-button/to
   ],
   template: `
     <mat-sidenav-container>
-      <mat-sidenav mode="side" opened="true">
+      <mat-sidenav #sidenav [mode]="mode()" [opened]="layout.opened()">
         <div class="p-6">
           <h2 class="text-lg text-gray-900">Categories</h2>
           <mat-nav-list>
@@ -73,14 +74,20 @@ export default class ProductsGrid {
 
   store = inject(EcommerceStore);
 
+  layout = inject(LayoutService);
+
+  @ViewChild(MatSidenav) sidenav!: MatSidenav;
+
+  mode = computed(() => (this.layout.isMobile() ? 'over' : 'side'));
+
   categories = signal<string[]>(['all', 'clothing', 'electronics', 'home', 'accessories']);
 
   constructor() {
     this.store.setCategory(this.category);
 
-    // effect(() => {
-    //   this.store.setCategory(this.category());
-    // });
+    effect(() => {
+      this.layout.opened() ? this.sidenav?.open() : this.sidenav?.close();
+    });
   }
 
   addToCart() {}
